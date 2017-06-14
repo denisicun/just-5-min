@@ -1,11 +1,33 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
 import * as firebase from 'firebase';
 import { Button, Card, CardSection, Input, Spinner } from './common';
 import { Actions } from 'react-native-router-flux'; // New code
 
 class LoginForm extends Component {
-  state = { email: '', password: '', error: '', loading: false };
+  state = { email: '', password: '', error: '', loading: false, username: '' };
+
+  constructor(props) {
+    super(props);
+//    state = { email: '', password: '', error: '', loading: false, username: '' };
+    console.log('this.props');
+    console.log(props);
+    console.log(this.props);
+  }
+
+  componentWillMount(){
+    if (this.props.username) {
+      console.log(this.props.userName);
+      //this.state.setState({username: this.props.userName});
+    }
+  }
+
+  componentWillMount(){
+    if (this.props.userName) {
+      console.log(this.props.userName);
+      //this.state.setState({username: this.props.userName});
+    }
+  }
 
   onButtonPress() {
     const { email, password } = this.state;
@@ -13,6 +35,26 @@ class LoginForm extends Component {
     this.setState({ error: '', loading: true });
 
     firebase.auth().signInWithEmailAndPassword(email, password)
+      .then(this.onLoginSuccess.bind(this))
+      .catch(() => {
+        console.log('trying to create user');
+        console.log(email);
+        console.log(password);
+        firebase.auth().createUserWithEmailAndPassword(email, password)
+          .then(this.onLoginSuccess.bind(this))
+          .catch((error) => {
+            console.log(error);
+            this.onLoginFail.bind(this);
+          });
+      });
+  }
+
+  onButtonPressD() {
+    const { email, password } = this.state;
+
+    this.setState({ error: '', loading: true });
+
+    firebase.auth().signInWithEmailAndPassword('denisicun@gmail.com', '123456')
       .then(this.onLoginSuccess.bind(this))
       .catch(() => {
         console.log('trying to create user');
@@ -49,9 +91,14 @@ class LoginForm extends Component {
     }
 
     return (
-      <Button onPress={this.onButtonPress.bind(this)}>
-        Log in
-      </Button>
+      <View>
+        <Button onPress={this.onButtonPress.bind(this)}>
+          Log in
+        </Button>
+        <Button onPress={this.onButtonPressD.bind(this)}>
+          Log in D
+        </Button>
+      </View>
     );
   }
 

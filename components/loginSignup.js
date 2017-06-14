@@ -4,13 +4,13 @@ import * as firebase from 'firebase';
 //import firebase from '../utils/fireBaseUtil';
 import { Header, Button, Spinner } from './common';
 import LoginForm from './LoginForm';
+import { Actions } from 'react-native-router-flux'; // New code
 
 class LoginSignup extends Component {
   state = { loggedIn: null };
 
   constructor(props){
-    super();
-
+    super(props);
   }
 
   componentWillMount() {
@@ -36,9 +36,16 @@ class LoginSignup extends Component {
     switch (this.state.loggedIn) {
       case true:
         return (
-          <Button onPress={() => firebase.auth().signOut()}>
-            Log Out
-          </Button>
+          <View>
+            <Button
+            onPress={() => Actions.workout({userName: 'Denis'})}
+            >
+              Workout!!
+            </Button>
+            <Button onPress={() => firebase.auth().signOut()}>
+              Log Out
+            </Button>
+          </View>
         );
       case false:
         return <LoginForm />;

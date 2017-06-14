@@ -4,6 +4,8 @@ import * as firebase from 'firebase';
 import LoginSignup from './loginSignup';
 import SingedUp from './loginSuccess';
 import Welcome from './welcome';
+import Workout from './workout';
+import End from './end';
 import { Button, Card, CardSection, Input, Spinner, Header } from './common';
 import { Router, Scene } from 'react-native-router-flux';
 
@@ -46,6 +48,16 @@ class App extends Component {
            key="signedUp"
            component={SingedUp}
            title="Set your name"
+         />
+         <Scene
+           key="workout"
+           component={Workout}
+           title="Just do it!"
+         />
+         <Scene
+           key="finish"
+           component={End}
+           title="You are done"
          />
       </Router>
     );

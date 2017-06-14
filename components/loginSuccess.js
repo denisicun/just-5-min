@@ -22,7 +22,7 @@ export default class SetName extends Component{
         label="Name"
         value={this.state.userName}
         onChangeText={userName => this.setState({ userName })}/>
-        <Button onPress={() => Actions.workout()}>
+        <Button onPress={() => Actions.workout({userName: this.state.userName})}>
           Lets start the insenety!!!!
         </Button>
       </View>
