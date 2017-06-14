@@ -11,8 +11,6 @@ class LoginSignup extends Component {
   constructor(props){
     super();
 
-    this.props.show = false;
-
   }
 
   componentWillMount() {
@@ -25,13 +23,13 @@ class LoginSignup extends Component {
     //   messagingSenderId: '147791624423'
     // });
     //
-    // firebase.auth().onAuthStateChanged((user) => {
-    //   if (user) {
-    //     this.setState({ loggedIn: true });
-    //   } else {
-    //     this.setState({ loggedIn: false });
-    //   }
-    // });
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.setState({ loggedIn: true });
+      } else {
+        this.setState({ loggedIn: false });
+      }
+    });
   }
 
   renderContent() {
