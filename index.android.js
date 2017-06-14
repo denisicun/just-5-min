@@ -91,4 +91,4 @@
 import { AppRegistry } from 'react-native';
 import App from './components/app';
 
- AppRegistry.registerComponent('puhsNotTest', () => App);
+ AppRegistry.registerComponent('just5Min', () => App);
