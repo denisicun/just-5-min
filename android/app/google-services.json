@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "147791624423",
+    "firebase_url": "https://just-5-minutes.firebaseio.com",
+    "project_id": "just-5-minutes",
+    "storage_bucket": "just-5-minutes.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:147791624423:android:d00bb0962329f2e5",
+        "android_client_info": {
+          "package_name": "com.puhsnottest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "147791624423-jp16cpr49bg1qt21q6vu4n3at2r4vkld.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_fpkxiNiA3qmIss6Xw_vK0mBIUy6liaA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:147791624423:android:913738cd546b8e84",
+        "android_client_info": {
+          "package_name": "com.just5min"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "147791624423-jp16cpr49bg1qt21q6vu4n3at2r4vkld.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_fpkxiNiA3qmIss6Xw_vK0mBIUy6liaA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
