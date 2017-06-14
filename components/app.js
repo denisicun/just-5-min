@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
 import * as firebase from 'firebase';
-//import firebase from '../utils/fireBaseUtil';
-import { Header, Button, Spinner } from './common';
-import LoginForm from './LoginForm';
+import LoginSignup from './loginSignup';
+import { Button, Card, CardSection, Input, Spinner, Header } from './common';
+import { Router, Scene } from 'react-native-router-flux';
 
 class App extends Component {
   state = { loggedIn: null };
@@ -27,27 +27,18 @@ class App extends Component {
     });
   }
 
-  renderContent() {
-    switch (this.state.loggedIn) {
-      case true:
-        return (
-          <Button onPress={() => firebase.auth().signOut()}>
-            Log Out
-          </Button>
-        );
-      case false:
-        return <LoginForm />;
-      default:
-        return <Spinner size="large" />;
-    }
-  }
-
   render() {
     return (
-      <View>
-        <Header headerText="Authentication" />
-        {this.renderContent()}
-      </View>
+      <Router>
+       <Scene key="root">
+          <View>
+            <Header headerText="Just 5 Minutes!" />
+          </View>
+          <Scene
+            
+          />
+        </Scene>
+      </Router>
     );
   }
 }
