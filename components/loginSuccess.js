@@ -4,7 +4,9 @@ import * as firebase from 'firebase';
 import { Button, Card, CardSection, Input, Spinner, Header } from './common';
 import { Actions } from 'react-native-router-flux'; // New code
 
-export default class Welcome extends Component{
+export default class SetName extends Component{
+  state = { userName: '' };
+
   constructor(props){
     super();
   }
@@ -13,18 +15,15 @@ export default class Welcome extends Component{
     return (
       <View style={styles.container}>
         <Text>
-          Welcome!
+          Please tell us your name:
         </Text>
-        <Button onPress={() => Actions.login()}>
-          <Image style={{width: 50, height: 50, paddingLeft: 5, marginRight: 5}}
-          source={{uri: 'https://facebook.github.io/react/img/logo_og.png'}} />
-          Sign in with E-mail
-        </Button>
-        <Button onPress={() => Actions.login()}>
-          Sign in with Google
-        </Button>
-        <Button onPress={() => Actions.login()}>
-          New here?
+        <Input
+        placeholder="Your full name"
+        label="Name"
+        value={this.state.userName}
+        onChangeText={userName => this.setState({ userName })}/>
+        <Button onPress={() => Actions.workout()}>
+          Lets start the insenety!!!!
         </Button>
       </View>
     );

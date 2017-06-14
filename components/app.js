@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View } from 'react-native';
 import * as firebase from 'firebase';
 import LoginSignup from './loginSignup';
+import SingedUp from './loginSuccess';
 import Welcome from './welcome';
 import { Button, Card, CardSection, Input, Spinner, Header } from './common';
 import { Router, Scene } from 'react-native-router-flux';
@@ -40,6 +41,11 @@ class App extends Component {
            key="login"
            component={LoginSignup}
            title="Sign up"
+         />
+         <Scene
+           key="signedUp"
+           component={SingedUp}
+           title="Set your name"
          />
       </Router>
     );

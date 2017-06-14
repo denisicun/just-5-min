@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Text } from 'react-native';
 import * as firebase from 'firebase';
 import { Button, Card, CardSection, Input, Spinner } from './common';
+import { Actions } from 'react-native-router-flux'; // New code
 
 class LoginForm extends Component {
   state = { email: '', password: '', error: '', loading: false };
@@ -37,6 +38,9 @@ class LoginForm extends Component {
       loading: false,
       error: ''
     });
+
+    // navigate to the set name
+    Actions.signedUp();
   }
 
   renderButton() {
