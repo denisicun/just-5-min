@@ -10,14 +10,14 @@ export default class Welcome extends Component{
   }
 
   render() {
+    // <Image style={{width: 50, height: 50, paddingLeft: 5, marginRight: 5}}
+    // source={{uri: 'https://facebook.github.io/react/img/logo_og.png'}} />
     return (
       <View style={styles.container}>
         <Text>
           Welcome!
         </Text>
-        <Button onPress={() => Actions.login()}>
-          <Image style={{width: 50, height: 50, paddingLeft: 5, marginRight: 5}}
-          source={{uri: 'https://facebook.github.io/react/img/logo_og.png'}} />
+        <Button onPress={() => Actions.login()}>        
           Sign in with E-mail
         </Button>
         <Button onPress={() => Actions.login()}>
