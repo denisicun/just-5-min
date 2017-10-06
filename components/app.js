@@ -11,18 +11,26 @@ import { Router, Scene } from 'react-native-router-flux';
 import BackgroundImage from './BackgroundImage';
 
 class App extends Component {
-  state = { loggedIn: null };
+  constructor(props) {
+    super(props);
+    this.state = { loggedIn: false };
+  }
 
   componentWillMount() {
-    firebase.initializeApp({
+    if(!firebase.apps.length){
+      // init firebase
+      firebase.initializeApp({
       apiKey: 'AIzaSyBYJm2EKnXN4A3ja5v0yefdVRm_VoTYit8',
       authDomain: 'just-5-minutes.firebaseapp.com',
       databaseURL: 'https://just-5-minutes.firebaseio.com',
       projectId: 'just-5-minutes',
       storageBucket: 'just-5-minutes.appspot.com',
       messagingSenderId: '147791624423'
-    });
+     });
+    }
+  }
 
+  componentDidMount(){
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         this.setState({ loggedIn: true });
@@ -41,12 +49,13 @@ class App extends Component {
               key="welcome"
               component={Welcome}
               title="Welcome"
-              initial
+              initial={() => {!this.state.loggedIn ? true : false}}
             />
              <Scene
                key="login"
                component={LoginSignup}
                title="Sign up"
+               initial={() => {this.state.loggedIn ? true : false}}
              />
              <Scene
                key="signedUp"
