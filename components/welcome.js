@@ -9,6 +9,9 @@ import BackgroundImage from './BackgroundImage';
 import Button from 'apsl-react-native-button';
 
 export default class Welcome extends Component{
+
+  state = { loggedIn: null };
+
   constructor(props){
     super();
   }
