@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import * as firebase from 'firebase';
 import LoginSignup from './loginSignup';
 import SingedUp from './loginSuccess';
@@ -8,6 +8,7 @@ import Workout from './workout';
 import End from './end';
 import { Button, Card, CardSection, Input, Spinner, Header } from './common';
 import { Router, Scene } from 'react-native-router-flux';
+import BackgroundImage from './BackgroundImage';
 
 class App extends Component {
   state = { loggedIn: null };
@@ -33,35 +34,48 @@ class App extends Component {
 
   render() {
     return (
-      <Router>
-        <Scene
-          key="welcome"
-          component={Welcome}
-          title="Welcome"
-        />
-         <Scene
-           key="login"
-           component={LoginSignup}
-           title="Sign up"
-         />
-         <Scene
-           key="signedUp"
-           component={SingedUp}
-           title="Set your name"
-         />
-         <Scene
-           key="workout"
-           component={Workout}
-           title="Just do it!"
-         />
-         <Scene
-           key="finish"
-           component={End}
-           title="You are done"
-         />
-      </Router>
+      <BackgroundImage style={{backgroundColor:'transparent'}}>
+        <Router sceneStyle={{backgroundColor:'transparent'}} hideNavBar>
+          <Scene key="root">
+            <Scene
+              key="welcome"
+              component={Welcome}
+              title="Welcome"
+              initial
+            />
+             <Scene
+               key="login"
+               component={LoginSignup}
+               title="Sign up"
+             />
+             <Scene
+               key="signedUp"
+               component={SingedUp}
+               title="Set your name"
+             />
+             <Scene
+               key="workout"
+               component={Workout}
+               title="Just do it!"
+             />
+             <Scene
+               key="finish"
+               component={End}
+               title="You are done"
+             />
+            </Scene>
+        </Router>
+      </BackgroundImage>
     );
   }
 }
+
+const styles = StyleSheet.create({
+    transBG: {
+      flex: 1,
+      backgroundColor: 'transparent',
+    },
+});
+
 
 export default App;

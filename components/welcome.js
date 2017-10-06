@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, Image} from 'react-native';
 import * as firebase from 'firebase';
-import { Button, Card, CardSection, Input, Spinner, Header } from './common';
+import { Card, CardSection, Input, Spinner, Header } from './common';
 import { Actions } from 'react-native-router-flux'; // New code
 import FacebookButton from './FacebookButton';
 import { LoginManager, AccessToken, LoginButton} from 'react-native-fbsdk';
+import BackgroundImage from './BackgroundImage';
+import Button from 'apsl-react-native-button';
 
 export default class Welcome extends Component{
   constructor(props){
@@ -64,40 +66,36 @@ export default class Welcome extends Component{
     // <Image style={{width: 50, height: 50, paddingLeft: 5, marginRight: 5}}
     // source={{uri: 'https://facebook.github.io/react/img/logo_og.png'}} />
     return (
-      <View style={styles.container}>
-        <Text>
-          Welcome!
-        </Text>
-        <Button onPress={() => Actions.login()}>
-          Sign in with E-mail
-        </Button>
-        <Button onPress={() => Actions.login()}>
-          Sign in with Google
-        </Button>
-        <Button onPress={() => Actions.login()}>
-          New here?
-        </Button>
+      <BackgroundImage>
         <View style={styles.container}>
-          <LoginButton
-          publishPermissions={["publish_actions"]}
-          onLoginFinished={
-            (error, result) => {
-              if (error) {
-                alert("login has error: " + result.error);
-              } else if (result.isCancelled) {
-                alert("login is cancelled.");
-              } else {
-                AccessToken.getCurrentAccessToken().then(
-                  (data) => {
-                    alert(data.accessToken.toString())
-                  }
-                )
+          <Text style={styles.welcome}>
+            Welcome!
+          </Text>
+          <Button onPress={() => Actions.login()}>
+            Sign in with E-mail
+          </Button>
+          <View style={styles.container}>
+            <LoginButton
+            publishPermissions={["publish_actions"]}
+            onLoginFinished={
+              (error, result) => {
+                if (error) {
+                  alert("login has error: " + result.error);
+                } else if (result.isCancelled) {
+                  alert("login is cancelled.");
+                } else {
+                  AccessToken.getCurrentAccessToken().then(
+                    (data) => {
+                      alert(data.accessToken.toString())
+                    }
+                  )
+                }
               }
             }
-          }
-          onLogoutFinished={() => alert("logout.")} />
+            onLogoutFinished={() => alert("logout.")} />
+          </View>
         </View>
-      </View>
+      </BackgroundImage>
     );
   }
 }
@@ -108,11 +106,14 @@ const styles = StyleSheet.create({
 //    justifyContent: 'center',
     alignItems: 'center',
     marginTop: 100,
+    backgroundColor: 'transparent',
   },
   welcome: {
-    fontSize: 20,
+    flex: 1,
+    fontSize: 50,
     textAlign: 'center',
     margin: 10,
     color: '#ffffff',
+    backgroundColor: 'transparent',
   },
 });
