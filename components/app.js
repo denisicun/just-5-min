@@ -49,7 +49,7 @@ class App extends Component {
               key="welcome"
               component={Welcome}
               title="Welcome"
-              initial={() => {!this.state.loggedIn ? true : false}}
+              initial={() => {!this.state.loggedIn ? true : true}}
             />
              <Scene
                key="login"

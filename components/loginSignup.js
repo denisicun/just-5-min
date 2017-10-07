@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 import { View } from 'react-native';
 import * as firebase from 'firebase';
 //import firebase from '../utils/fireBaseUtil';
-import { Header, Button, Spinner } from './common';
+import { Header, Spinner } from './common';
 import LoginForm from './LoginForm';
+import Welcome from './welcome';
 import { Actions } from 'react-native-router-flux'; // New code
+import BackgroundImage from './BackgroundImage';
+import Button from 'apsl-react-native-button';
 
 class LoginSignup extends Component {
   state = { loggedIn: null };
@@ -56,10 +59,11 @@ class LoginSignup extends Component {
 
   render() {
     return (
-      <View>
-        <Header headerText="Authentication" />
-        {this.renderContent()}
-      </View>
+      <BackgroundImage>
+        <View>
+          {this.renderContent()}
+        </View>
+      </BackgroundImage>
     );
   }
 }
